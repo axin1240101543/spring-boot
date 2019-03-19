@@ -1,5 +1,5 @@
 # 简介
-* 分布式锁
-* thymeleaf
-* redis
-* mybatis
+* **分布式锁**
+* **thymeleaf**
+* **redis**
+* **mybatis**
