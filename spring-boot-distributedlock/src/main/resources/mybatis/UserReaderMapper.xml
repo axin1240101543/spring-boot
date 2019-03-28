@@ -27,13 +27,13 @@
     from user
     <where>
       <if test="name != null and name != ''">
-        and name LIKE '%${name}%'
+        and name LIKE concat('%', #{name}, '%')
       </if>
       <if test="startTime != null and startTime != ''">
-        and create_time &gt; #{startTime}
+        and create_time &gt;= DATE_FORMAT(#{startTime,jdbcType=TIMESTAMP},'%Y-%m-%d %H:%i:%s')
       </if>
       <if test="endTime != null and endTime != ''">
-        and create_time &lt; #{endTime}
+        and create_time &lt;= DATE_FORMAT(#{endTime,jdbcType=TIMESTAMP},'%Y-%m-%d %H:%i:%s')
       </if>
     </where>
     limit ${offset}, ${limit}
@@ -48,10 +48,10 @@
         and name LIKE concat('%', #{name}, '%')
       </if>
       <if test="startTime != null and startTime != ''">
-        and create_time &gt; #{startTime}
+        and create_time &gt;= DATE_FORMAT(#{startTime,jdbcType=TIMESTAMP},'%Y-%m-%d %H:%i:%s')
       </if>
       <if test="endTime != null and endTime != ''">
-        and create_time &lt; #{endTime}
+        and create_time &lt;= DATE_FORMAT(#{endTime,jdbcType=TIMESTAMP},'%Y-%m-%d %H:%i:%s')
       </if>
     </where>
   </select>

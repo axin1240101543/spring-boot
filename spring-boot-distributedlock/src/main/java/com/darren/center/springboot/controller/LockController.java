@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 测试Redis分布式锁

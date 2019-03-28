@@ -1,10 +1,27 @@
 var $;
-layui.use(['form', 'layer', 'jquery', 'table'], function () {
+layui.use(['form', 'layer', 'jquery', 'table', 'laydate'], function () {
     //定义参数
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : parent.layer,
         $ = layui.jquery,
-        table = layui.table;
+        table = layui.table,
+        laydate = layui.laydate;
+
+    //使用layui日期组件
+    laydate.render({
+        type: 'datetime',
+        // lang: 'en',
+        theme: 'grid',
+        calendar: true,
+        elem: '#startTime'
+    });
+    laydate.render({
+        type: 'datetime',
+        // lang: 'en',
+        // theme: 'grid',
+        // calendar: true,
+        elem: '#endTime'
+    });
 
     //方法级渲染的重载 https://www.layui.com/doc/modules/table.html#reload
     //所获得的tableIns即为当前容器的实例
