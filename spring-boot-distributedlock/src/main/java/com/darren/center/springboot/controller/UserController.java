@@ -1,9 +1,12 @@
 package com.darren.center.springboot.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.darren.center.springboot.common.Constants;
 import com.darren.center.springboot.common.ResponseHelper;
 import com.darren.center.springboot.common.WebStatusEnum;
+import com.darren.center.springboot.entity.Dict;
 import com.darren.center.springboot.entity.User;
+import com.darren.center.springboot.service.DictService;
 import com.darren.center.springboot.service.UserService;
 import com.darren.center.springboot.utils.ResponseUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -23,13 +26,23 @@ public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private DictService dictService;
+
     @RequestMapping("/test")
     public String test(){
         return "user/test";
     }
 
+    /**
+     * 访问主页
+     * @param model
+     * @return
+     */
     @RequestMapping("/list")
-    public String list(){
+    public String list(Model model){
+        List<Dict> data = dictService.selectDictByType(Constants.USER_SEX);
+        model.addAttribute("data", data);
         return "user/list";
     }
 
@@ -59,7 +72,11 @@ public class UserController extends BaseController{
         return "user/edit";
     }
 
-
+    /**
+     * 保存
+     * @param user
+     * @return
+     */
     @RequestMapping("/save")
     @ResponseBody
     public ResponseHelper save(User user){
