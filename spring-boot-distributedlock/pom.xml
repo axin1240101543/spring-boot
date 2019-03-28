@@ -65,8 +65,6 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!-- spring boot end -->
-
-
         <!-- tools begin -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -93,7 +91,6 @@
             </exclusions>
         </dependency>
         <!-- tools end -->
-
         <!-- other begin -->
         <dependency>
             <groupId>com.alibaba</groupId>
