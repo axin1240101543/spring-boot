@@ -61,14 +61,14 @@ layui.use(['form', 'layer', 'jquery', 'table', 'laydate'], function () {
     //搜索
     $("body").on("click", ".searchBtn", function () {
         var name = $.trim($("#name").val());
-        // var sex = $.trim($("#sex").val());
+        var sex = $.trim($("#sex").val());
         var startTime = $.trim($("#startTime").val());
         var endTime = $.trim($("#endTime").val());
         tableIns.reload({
             //请求参数
             where: {
                 name: name
-                // , sex: sex
+                , sex: sex
                 , startTime: startTime
                 , endTime: endTime
             },//重新从第1页开始

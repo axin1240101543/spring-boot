@@ -14,15 +14,15 @@
                 <div class="layui-input-inline">
                     <input type="text" id="name" name="name" placeholder="姓名" class="layui-input"/>
                 </div>
-                <!--<div class="layui-input-inline">
+                <div class="layui-input-inline">
                     <label class="layui-form-label">性别</label>
-                    <div class="layui-input-block">
+                    <div class="layui-input-inline">
                         <select id="sex" name="sex">
-                            <option th:value="">全部</option>
-                            <option th:each="d : ${data}" th:value="${d.dictCode}" th:text="${d.dictName}"></option>
+                            <option value="">全部</option>
+                            <option th:each="d : ${data}" th:value="${d.dictName}" th:text="${d.dictName}"></option>
                         </select>
                     </div>
-                </div>-->
+                </div>
                 <div class="layui-input-inline">
                     <input type="text" id="startTime" name="startTime" placeholder="开始时间" class="layui-input" th:readonly="true"/>
                 </div>
