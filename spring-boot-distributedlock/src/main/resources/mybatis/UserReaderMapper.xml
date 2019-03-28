@@ -21,9 +21,38 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
 
-  <select id="selectUserList" resultMap="BaseResultMap">
+  <select id="selectUserList" parameterType="map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from user
+    <where>
+      <if test="name != null and name != ''">
+        and name LIKE '%${name}%'
+      </if>
+      <if test="startTime != null and startTime != ''">
+        and create_time &gt; #{startTime}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        and create_time &lt; #{endTime}
+      </if>
+    </where>
+    limit ${offset}, ${limit}
+  </select>
+
+  <select id="selectUserListPageCount" parameterType="map" resultType="integer">
+    select
+    COUNT(1)
+    from user
+    <where>
+      <if test="name != null and name != ''">
+        and name LIKE concat('%', #{name}, '%')
+      </if>
+      <if test="startTime != null and startTime != ''">
+        and create_time &gt; #{startTime}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        and create_time &lt; #{endTime}
+      </if>
+    </where>
   </select>
 </mapper>

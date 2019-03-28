@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -27,8 +28,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> selectUserList() {
-        return userReaderDao.selectUserList();
+    public List<User> selectUserList(Map<String, Object> params) {
+        return userReaderDao.selectUserList(params);
+    }
+
+    @Override
+    public Integer selectUserListPageCount(Map<String, Object> params) {
+        return userReaderDao.selectUserListPageCount(params);
     }
 
     @Override

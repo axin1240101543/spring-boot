@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 测试Redis分布式锁
@@ -45,7 +47,7 @@ public class LockController extends BaseController{
             log.warn("未获取到锁, lockName:{}, lockValue:{}", LOCKNAME, lockValue);
             return "未获取到锁";
         }
-        List<User> list = userService.selectUserList();
+        List<User> list = userService.selectUserList(new HashMap<>());
         if (!redisLockService.releaseLock(LOCKNAME, lockValue)){
             log.error("释放锁失败, lockName:{}, lockValue:{}", LOCKNAME, lockValue);
         }

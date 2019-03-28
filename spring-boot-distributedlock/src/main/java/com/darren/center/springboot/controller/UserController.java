@@ -1,63 +1,76 @@
 package com.darren.center.springboot.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.darren.center.springboot.common.ResponseHelper;
+import com.darren.center.springboot.common.WebStatusEnum;
 import com.darren.center.springboot.entity.User;
 import com.darren.center.springboot.service.UserService;
+import com.darren.center.springboot.utils.ResponseUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
+@RequestMapping("/user")
 public class UserController extends BaseController{
 
     @Autowired
-    private UserService helloService;
+    private UserService userService;
 
-    @GetMapping("/index")
-    public String user(){
-        return "redirect:/getUserList";
+    @RequestMapping("/test")
+    public String test(){
+        return "user/test";
     }
 
-
-    @GetMapping("/getUserList")
-    public String getUserList(Model model){
-        List<User> users = helloService.selectUserList();
-        model.addAttribute("users", users);
-        return "user/user";
+    @RequestMapping("/list")
+    public String list(){
+        return "user/list";
     }
 
-
-    @GetMapping("/deleteUser")
-    public String deleteUser(Long id){
-        helloService.deleteUserById(id);
-        return "redirect:/getUserList";
+    /**
+     * 返回json数据
+     * @param params
+     * @return
+     */
+    @RequestMapping("/listPage")
+    @ResponseBody
+    public ResponseHelper listPage(@RequestParam Map<String, Object> params){
+        List<User> users = userService.selectUserList(params);
+        Integer pageCount = userService.selectUserListPageCount(params);
+        return ResponseUtils.response(WebStatusEnum.SUCCESS.getCode(), WebStatusEnum.SUCCESS.getMsg(), users, pageCount);
     }
 
-    @GetMapping("/toAddUser")
-    public String toAddUser(){
-        return "user/add";
-    }
-
-    @GetMapping("/addUser")
-    public String addUser(User user){
-        helloService.addUser(user);
-        return "redirect:/getUserList";
-    }
-
-    @GetMapping("/toEditUser")
-    public String toEditUser(Model model, Long id){
-        model.addAttribute("id", id);
+    /**
+     * 跳转到编辑页面
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable("id") int id, Model model){
+        User user = userService.selectByPrimaryKey(Long.valueOf(id));
+        model.addAttribute("user", user);
         return "user/edit";
     }
 
-    @GetMapping("/editUser")
-    public String editUser(User user){
-        helloService.editUserById(user);
-        return "redirect:/getUserList";
-    }
 
+    @RequestMapping("/save")
+    @ResponseBody
+    public ResponseHelper save(User user){
+        int flag;
+        if (null == user.getId()){
+            flag = userService.addUser(user);
+        }else {
+            flag = userService.editUserById(user);
+        }
+        ResponseHelper responseHelper = ResponseUtils.responseWrap(flag);
+        System.out.println(JSONObject.toJSONString(responseHelper));
+        return responseHelper;
+    }
 }

@@ -1,4 +1,4 @@
-package com.darren.center.springboot.entity;
+package com.darren.center.springboot.common;
 
 import java.io.Serializable;
 import java.util.HashMap;

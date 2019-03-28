@@ -1,20 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>编辑用户</title>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/dist/css/bootstrap.css}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>用户信息编辑</title>
+    <link rel="stylesheet" th:href="@{/layui.2.2.3/layui/css/layui.css}" media="all"/>
 </head>
-<body class="container">
-<h1>编辑用户</h1>
-<br>
-<div class="with:80%">
-    <form class="form-horizontal" th:action="@{/editUser}" method="post">
-        <input type="hidden" name="id" th:value="*{id}">
-        <div class="form-group">
+<body class="childrenBody">
+<form class="layui-form" style="width:80%;">
+    <div class="layui-row" style="margin-top: 20px;">
 
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="hidden" name="id" th:value="${user.id}" />
+                <input type="text" name="name" th:value="${user.name}" class="layui-input" th:readonly="true" />
+            </div>
         </div>
-    </form>
-</div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="text" name="sex" th:value="${user.sex}" class="layui-input" th:readonly="true" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">年龄</label>
+            <div class="layui-input-block">
+                <input type="text" name="age" th:value="${user.age}" class="layui-input" th:readonly="true" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="mobile" th:value="${user.mobile}" class="layui-input" lay-verify="required" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="saveSubmit">保存</button>
+            </div>
+        </div>
+    </div>
+</form>
 </body>
+<script type="text/javascript" th:src="@{/layui.2.2.3/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/js/user.js}"></script>
+<script type="text/javascript" th:src="@{/js/base.js}"></script>
 </html>

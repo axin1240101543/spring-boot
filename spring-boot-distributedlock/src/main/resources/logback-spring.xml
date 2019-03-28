@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property name="PROJECT_NAME" value="darren-micro-user"/><!-- 项目名称 -->
+    <property name="PROJECT_NAME" value="spring-boot-distributedlock"/><!-- 项目名称 -->
     <property name="LOG_HOME" value="D:/logs"/><!-- 日志路径 -->
 
     <!-- 控制台日志 -->
