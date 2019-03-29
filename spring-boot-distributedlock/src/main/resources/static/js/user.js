@@ -17,7 +17,7 @@ layui.use(['form', 'layer', 'jquery', 'table', 'laydate'], function () {
     });
     laydate.render({
         type: 'datetime',
-        // lang: 'en',
+        lang: 'en',
         // theme: 'grid',
         // calendar: true,
         elem: '#endTime'
