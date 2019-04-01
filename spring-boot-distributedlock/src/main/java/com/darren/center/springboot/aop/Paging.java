@@ -19,7 +19,7 @@ import java.util.Map;
 @Slf4j
 @Aspect
 @Component
-public class ConstructPageParams {
+public class Paging {
 
     private final String PAGE_FLAG = "^*listPage*";
 
@@ -28,7 +28,7 @@ public class ConstructPageParams {
      * 1、* *..controller..*(..)
      * 2、public * *(..)
      * 3、* com.darren.center.springboot.controller.UserController.*(..)
-     * 4、* com.darren.center.springboot.controller..*.*(..)   第一个*：返回类型 第二个..：当前包 + 子包 第三个*：类 第四个*：方法 第五个..：参数
+     * 4、* com.darren.center.springboot.controller..*.*(..)   第一个*：返回类型；第二个..：当前包 + 子包；第三个*：类；第四个*：方法；第五个..：参数
      * @param point
      * @return
      * @throws Throwable

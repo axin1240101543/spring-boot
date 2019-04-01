@@ -1,7 +1,7 @@
 package com.darren.center.springboot;
 
-import com.darren.center.springboot.aop.CacheKeyGenerator;
 import com.darren.center.springboot.aop.LockKeyGenerator;
+import com.darren.center.springboot.aop.LockKeyGeneratorImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +14,8 @@ public class DarrenSpringBootCenterApplication {
 	}
 
 	@Bean
-	public CacheKeyGenerator cacheKeyGenerator(){
-		return new LockKeyGenerator();
+	public LockKeyGenerator cacheKeyGenerator(){
+		return new LockKeyGeneratorImpl();
 	}
 }
 

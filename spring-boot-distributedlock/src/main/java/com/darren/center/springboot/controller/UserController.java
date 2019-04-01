@@ -1,6 +1,7 @@
 package com.darren.center.springboot.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.darren.center.springboot.annotation.RequestLimit;
 import com.darren.center.springboot.common.Constants;
 import com.darren.center.springboot.common.ResponseHelper;
 import com.darren.center.springboot.common.WebStatusEnum;
@@ -53,6 +54,7 @@ public class UserController extends BaseController{
      */
     @RequestMapping("/listPage")
     @ResponseBody
+    @RequestLimit(count = 5)
     public ResponseHelper listPage(@RequestParam Map<String, Object> params){
         List<User> users = userService.selectUserList(params);
         Integer pageCount = userService.selectUserListPageCount(params);

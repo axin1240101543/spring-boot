@@ -50,6 +50,9 @@
       <if test="name != null and name != ''">
         and name LIKE concat('%', #{name}, '%')
       </if>
+      <if test="sex != null and sex != ''">
+        and sex = #{sex}
+      </if>
       <if test="startTime != null and startTime != ''">
         and create_time &gt;= DATE_FORMAT(#{startTime,jdbcType=TIMESTAMP},'%Y-%m-%d %H:%i:%s')
       </if>

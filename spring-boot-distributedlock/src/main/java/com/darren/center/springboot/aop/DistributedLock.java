@@ -11,17 +11,20 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.lang.reflect.Method;
 
+/**
+ * 分布式锁
+ */
 @Aspect
 @Configuration
-public class LockMethodInterceptor {
+public class DistributedLock {
 
     private final StringRedisTemplate stringRedisTemplate;
 
-    private final CacheKeyGenerator cacheKeyGenerator;
+    private final LockKeyGenerator lockKeyGenerator;
 
-    public LockMethodInterceptor(StringRedisTemplate stringRedisTemplate, CacheKeyGenerator cacheKeyGenerator) {
+    public DistributedLock(StringRedisTemplate stringRedisTemplate, LockKeyGenerator lockKeyGenerator) {
         this.stringRedisTemplate = stringRedisTemplate;
-        this.cacheKeyGenerator = cacheKeyGenerator;
+        this.lockKeyGenerator = lockKeyGenerator;
     }
 
     @Around("execution(public * *(..)) && @annotation(com.darren.center.springboot.annotation.CacheLock)")
@@ -32,7 +35,7 @@ public class LockMethodInterceptor {
         if (StringUtils.isEmpty(lockAnnotation.prefix())){
             throw new RuntimeException("lock key can't be null ...");
         }
-        final String lockKey = cacheKeyGenerator.getLockKey(point);
+        final String lockKey = lockKeyGenerator.getLockKey(point);
         try {
             final Boolean b = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, "");
             if (b){
