@@ -1,6 +1,5 @@
 package com.darren.center.springboot.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.darren.center.springboot.annotation.RequestLimit;
 import com.darren.center.springboot.common.Constants;
 import com.darren.center.springboot.common.ResponseHelper;
@@ -14,7 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
@@ -54,7 +56,6 @@ public class UserController extends BaseController{
      */
     @RequestMapping("/listPage")
     @ResponseBody
-    @RequestLimit(count = 5)
     public ResponseHelper listPage(@RequestParam Map<String, Object> params){
         List<User> users = userService.selectUserList(params);
         Integer pageCount = userService.selectUserListPageCount(params);
@@ -81,6 +82,7 @@ public class UserController extends BaseController{
      */
     @RequestMapping("/save")
     @ResponseBody
+    @RequestLimit(count = 5)
     public ResponseHelper save(User user){
         int flag;
         if (null == user.getId()){
@@ -88,8 +90,6 @@ public class UserController extends BaseController{
         }else {
             flag = userService.editUserById(user);
         }
-        ResponseHelper responseHelper = ResponseUtils.responseWrap(flag);
-        System.out.println(JSONObject.toJSONString(responseHelper));
-        return responseHelper;
+        return ResponseUtils.responseWrap(flag);
     }
 }
