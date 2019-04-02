@@ -78,13 +78,23 @@ layui.use(['form', 'layer', 'jquery', 'table', 'laydate'], function () {
         });
     })
 
+    //新增
+    $("body").on("click", ".add", function () {
+        layui.layer.open({
+            title: "新增菜单信息",//标题
+            type: 2,//基本层类型
+            area: ['500px', '350px'], //宽高
+            content: s.rootUrl + "/user/add" //内容
+        });
+    })
+
     //编辑
     $("body").on("click", ".edit", function () {
         var id = $(this).attr('data-id');
         layui.layer.open({
             title: "编辑菜单信息",//标题
             type: 2,//基本层类型
-            area: ['500px', '400px'], //宽高
+            area: ['500px', '350px'], //宽高
             content: s.rootUrl + "/user/edit/" + id //内容
         });
     })

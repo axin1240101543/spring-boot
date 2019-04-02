@@ -63,6 +63,15 @@ public class UserController extends BaseController{
     }
 
     /**
+     * 跳转到新增页面
+     * @return
+     */
+    @RequestMapping("/add")
+    public String add(){
+        return "user/add";
+    }
+
+    /**
      * 跳转到编辑页面
      * @param id
      * @param model
