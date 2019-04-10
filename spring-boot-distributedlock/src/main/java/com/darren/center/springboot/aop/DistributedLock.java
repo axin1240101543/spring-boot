@@ -6,8 +6,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  * 分布式锁
  */
 @Aspect
-@Configuration
+@Component
 public class DistributedLock {
 
     private final StringRedisTemplate stringRedisTemplate;
