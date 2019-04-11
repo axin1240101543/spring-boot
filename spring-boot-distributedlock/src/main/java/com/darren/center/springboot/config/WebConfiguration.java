@@ -36,7 +36,7 @@ public class WebConfiguration {
         return new ContextFilter();
     }
 
-    /*@Bean
+    @Bean
     public Filter1 filter1(){
         return new Filter1();
     }
@@ -44,7 +44,7 @@ public class WebConfiguration {
     @Bean
     public Filter2 filter2(){
         return new Filter2();
-    }*/
+    }
 
 
     @Bean(name = "webComponentFilter")
@@ -57,7 +57,10 @@ public class WebConfiguration {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new DelegatingFilterProxy());
         registrationBean.addUrlPatterns("/*");
+        //被代理filter
         registrationBean.addInitParameter("targetBeanName", "webComponentFilter");
+        //指明作用于filter的所有生命周期
+        registrationBean.addInitParameter("targetFilterLifecycle", "true");
         registrationBean.setName("WebComponentFilter");
         registrationBean.setOrder(1);
         registrationBean.setEnabled(false);

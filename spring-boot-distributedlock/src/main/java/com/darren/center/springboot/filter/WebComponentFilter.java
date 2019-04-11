@@ -20,10 +20,10 @@ public class WebComponentFilter implements Filter{
     private WebComponentFilterChain webComponentFilterChain;
     @Autowired
     private ContextFilter contextFilter;
-    /*@Autowired
+    @Autowired
     private Filter1 filter1;
     @Autowired
-    private Filter2 filter2;*/
+    private Filter2 filter2;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -32,8 +32,8 @@ public class WebComponentFilter implements Filter{
         ContextFilter contextFilter = (ContextFilter) applicationContext.getBean("contextFilter");*/
         List<com.darren.center.springboot.filter.Filter> filters = new ArrayList<>();
         filters.add(contextFilter);
-//        filters.add(filter1);
-//        filters.add(filter2);
+        filters.add(filter1);
+        filters.add(filter2);
         webComponentFilterChain.setFilters(filters);
     }
 
