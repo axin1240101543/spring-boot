@@ -1,4 +1,4 @@
-package com.darren.center.enums;
+package com.darren.center.springboot.enums;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;

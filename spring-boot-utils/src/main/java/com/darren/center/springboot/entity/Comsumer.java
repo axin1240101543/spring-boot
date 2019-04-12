@@ -1,4 +1,4 @@
-package com.darren.center.entity;
+package com.darren.center.springboot.entity;
 
 import java.util.concurrent.BlockingQueue;
 
