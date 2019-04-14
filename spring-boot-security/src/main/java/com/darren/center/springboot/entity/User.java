@@ -22,6 +22,8 @@ public class User implements UserDetails,Serializable{
     private Date createDate;
 
     private String password;
+	
+	
 
     private List<? extends GrantedAuthority> authorities;
 
