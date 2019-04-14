@@ -42,7 +42,7 @@ public class CustomUserDetailService implements UserDetailsService{
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(menu.getUrl());
                 grantedAuthorities.add(grantedAuthority);
             }
-            user.setGrantedAuthorities(grantedAuthorities);
+            user.setAuthorities(grantedAuthorities);
         }
         return user;
     }
