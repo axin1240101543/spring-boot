@@ -17,5 +17,5 @@ CREATE TABLE `dict` (
 ALTER TABLE user AUTO_INCREMENT = 0;
 TRUNCATE TABLE user;
 
-INSERT INTO darren_service_center.dict(dict_code, dict_name, dict_type) VALUES ('1', '男', 'USER_SEX');
-INSERT INTO darren_service_center.dict(dict_code, dict_name, dict_type) VALUES ('2', '女', 'USER_SEX');
+INSERT INTO `darren_service_center`.`dict` (`id`, `dict_code`, `dict_name`, `dict_type`, `dict_desc`, `remark`, `create_time`, `update_time`, `ext_fields`) VALUES ('1', '1', '男', 'USER_SEX', NULL, NULL, '2019-03-28 14:48:50', '2019-03-28 14:48:50', NULL);
+INSERT INTO `darren_service_center`.`dict` (`id`, `dict_code`, `dict_name`, `dict_type`, `dict_desc`, `remark`, `create_time`, `update_time`, `ext_fields`) VALUES ('2', '2', '女', 'USER_SEX', NULL, NULL, '2019-03-28 14:48:50', '2019-03-28 14:48:50', NULL);
