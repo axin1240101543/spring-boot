@@ -12,6 +12,7 @@
 		<module>spring-boot-distributedlock</module>
 		<module>spring-boot-utils</module>
 		<module>spring-boot-security</module>
+		<module>spring-boot-beetl</module>
     </modules>
 
     <parent>
