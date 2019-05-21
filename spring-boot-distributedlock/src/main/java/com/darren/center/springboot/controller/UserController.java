@@ -21,6 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * http://localhost:8881/spring-boot/user/list
+ */
 @Slf4j
 @Controller
 @RequestMapping("/user")
