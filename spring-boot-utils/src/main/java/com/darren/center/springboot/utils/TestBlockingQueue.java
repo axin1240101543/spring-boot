@@ -1,7 +1,7 @@
 package com.darren.center.springboot.utils;
 
-import com.darren.center.entity.Comsumer;
-import com.darren.center.entity.Producer;
+import com.darren.center.springboot.entity.Comsumer;
+import com.darren.center.springboot.entity.Producer;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

@@ -1,5 +1,6 @@
 package com.darren.center.springboot.config;
 
+import com.darren.center.springboot.utils.AuthUtils;
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
 
 /**
@@ -9,6 +10,6 @@ public class BeetlConfiguration extends BeetlGroupUtilConfiguration{
 
     @Override
     protected void initOther() {
-        super.initOther();
+        groupTemplate.registerFunctionPackage("auth", new AuthUtils());
     }
 }

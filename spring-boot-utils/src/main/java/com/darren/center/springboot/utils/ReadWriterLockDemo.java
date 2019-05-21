@@ -1,6 +1,6 @@
 package com.darren.center.springboot.utils;
 
-import com.darren.center.enums.ReadWriteLockEnum;
+import com.darren.center.springboot.enums.ReadWriteLockEnum;
 
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;

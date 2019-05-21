@@ -1,6 +1,6 @@
 package com.darren.center.springboot.utils;
 
-import com.darren.center.entity.User;
+import com.darren.center.springboot.entity.User;
 
 /**
  * 只有对象才会变化
