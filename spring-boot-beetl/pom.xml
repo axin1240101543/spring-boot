@@ -20,16 +20,20 @@
     </properties>
 
     <dependencies>
-        <!-- 使用beetl模板 -->
-        <dependency>
-            <groupId>com.ibeetl</groupId>
-            <artifactId>beetl-framework-starter</artifactId>
-            <version>1.1.68.RELEASE</version>
-        </dependency>
+
         <!-- spring boot begin -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.5</version>
         </dependency>
         <!-- 热部署 -->
         <dependency>
@@ -37,13 +41,23 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- spring boot end -->
+
         <!-- tools begin -->
+        <!-- 使用beetl模板 -->
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl-framework-starter</artifactId>
+            <version>1.1.68.RELEASE</version>
+        </dependency>
+        <!-- 使用lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- tools end -->
+
         <!-- other begin -->
         <dependency>
             <groupId>com.alibaba</groupId>
