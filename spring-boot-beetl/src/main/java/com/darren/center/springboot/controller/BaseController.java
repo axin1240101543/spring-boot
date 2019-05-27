@@ -30,4 +30,15 @@ public class BaseController {
         return "index.html";
     }
 
+    @GetMapping("/index2")
+    public String index1(HttpServletRequest request){
+        log.info("index2 --- begin ---");
+        Map<String, Object> params = new HashMap<>();
+        params.put("offset", "0");
+        params.put("limit", "10");
+        request.setAttribute("users", userService.selectUserList(params));
+        log.info("index2 --- end ---");
+        return "index2.html";
+    }
+
 }
