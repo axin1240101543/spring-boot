@@ -9,4 +9,3 @@
 <body>
 <h>${ctxPath}</h><br/>
 ${test}
-<header>
