@@ -1,5 +1,7 @@
 package com.darren.center.springboot.controller;
 
+import com.darren.center.springboot.common.Constants;
+import com.darren.center.springboot.service.DictService;
 import com.darren.center.springboot.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class BaseController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private DictService dictService;
+
     @GetMapping("/")
     public String index(HttpServletRequest request){
         log.info("index --- begin ---");
@@ -31,7 +36,7 @@ public class BaseController {
     }
 
     @GetMapping("/index2")
-    public String index1(HttpServletRequest request){
+    public String index2(HttpServletRequest request){
         log.info("index2 --- begin ---");
         Map<String, Object> params = new HashMap<>();
         params.put("offset", "0");
@@ -39,6 +44,21 @@ public class BaseController {
         request.setAttribute("users", userService.selectUserList(params));
         log.info("index2 --- end ---");
         return "index2.html";
+    }
+
+    /**
+     * ajax局部渲染
+     * 前端语法：#ajax tags:{……}
+     * 后台语法：@GetMapping("/tags") …… return "index3.html#tags";
+     * @param request
+     * @return
+     */
+    @GetMapping("/tags")
+    public String tags(HttpServletRequest request){
+        log.info("index3 --- begin ---");
+        request.setAttribute("dicts", dictService.selectDictByType(Constants.USER_SEX));
+        log.info("index3 --- end ---");
+        return "index3.html#tags";
     }
 
 }
