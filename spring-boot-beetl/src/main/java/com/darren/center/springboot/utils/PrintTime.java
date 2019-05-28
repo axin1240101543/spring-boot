@@ -15,7 +15,12 @@ public class PrintTime implements Function{
 
     /**
      *
-     * @param objects 模板传递过来的参数列表（byteWriter：输出流、template：模板本身、gt GroupTemplate、globalVar：该模板对应的全局变量、byteOutputMode：模板的输出模式，字符还是字节、safeOutput：模板当前是否处于安全输出模式）
+     * @param objects 模板传递过来的参数列表
+     *                （byteWriter：输出流、template：模板本身、
+     *                  gt：GroupTemplate、
+     *                  globalVar：该模板对应的全局变量、
+     *                  byteOutputMode：模板的输出模式，字符还是字节、
+     *                  safeOutput：模板当前是否处于安全输出模式）
      * @param context beetl模板的上下文context
      * @return Object
      *  如果无返回，返回null即可
