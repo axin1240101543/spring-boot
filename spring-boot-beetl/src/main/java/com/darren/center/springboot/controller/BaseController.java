@@ -1,12 +1,15 @@
 package com.darren.center.springboot.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.darren.center.springboot.common.Constants;
+import com.darren.center.springboot.entity.Blog;
 import com.darren.center.springboot.service.DictService;
 import com.darren.center.springboot.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -59,6 +62,17 @@ public class BaseController {
         request.setAttribute("dicts", dictService.selectDictByType(Constants.USER_SEX));
         log.info("index3 --- end ---");
         return "index3.html#tags";
+    }
+
+    @GetMapping("/createBlog")
+    public String createBlog(HttpServletRequest request){
+        return "create.html";
+    }
+
+    @PostMapping("/saveBlog")
+    public String saveBlog(Blog blog, HttpServletRequest request){
+        log.info(JSONObject.toJSONString(blog));
+        return "redirect:/createBlog";
     }
 
 }
