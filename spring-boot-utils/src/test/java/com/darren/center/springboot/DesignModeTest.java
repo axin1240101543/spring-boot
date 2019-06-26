@@ -3,6 +3,7 @@ package com.darren.center.springboot;
 import com.darren.center.springboot.command.Action;
 import com.darren.center.springboot.command.ActionMapper;
 import com.darren.center.springboot.entity.WebParams;
+import com.darren.center.springboot.exceptions.UtilsException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,16 +23,22 @@ public class DesignModeTest {
     private ActionMapper mapper;
 
     @Test
-    public void test() throws Exception{
+    public void test(){
         WebParams webParams = WebParams.getWebparams();
-        webParams.setType("Action2");
+        webParams.setType("Action1");
         Action action = mapper.findAction(webParams.getType());
-        boolean flag = action.action(webParams);
         String result = null;
-        if (flag){
-            result = action.doAction(webParams);
+        try {
+            boolean flag = action.action(webParams);
+            if (flag){
+                result = action.doAction(webParams);
+            }
+            log.info(result);
+        }catch (UtilsException e){
+            UtilsException biz = UtilsException.UNKNOWN_EXCEPTION;
+            log.error("code:{}, msg:{}", biz.getCode(), biz.getMsg());
         }
-        log.info(result);
+
     }
 
 }

@@ -9,8 +9,8 @@ import com.darren.center.springboot.entity.WebParams;
  */
 public interface Action {
 
-     boolean action(WebParams params) throws Exception;
+     boolean action(WebParams params);
 
-     String doAction(WebParams params) throws Exception;
+     String doAction(WebParams params);
 
 }
