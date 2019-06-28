@@ -1,4 +1,4 @@
-package com.darren.center.springboot.designmode.strategypattern;
+package com.darren.center.springboot.action;
 
 import com.darren.center.springboot.command.AbstractAction;
 import com.darren.center.springboot.command.ActionMapper;
@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component("Action1")
-public class Action1 extends AbstractAction {
+@Component("Action2")
+public class Action2 extends AbstractAction {
 
-    public Action1(@Value("${service.code.Action1:Action1}")String serviceCode,
+    public Action2(@Value("${service.code.Action2:Action2}")String serviceCode,
                    @Qualifier("Action-BaseActionMapper")ActionMapper actionMapper) {
         super(serviceCode, actionMapper);
     }
@@ -24,7 +24,7 @@ public class Action1 extends AbstractAction {
         if (null == params || null == params.getType()){
             throw new UtilsException(UtilsException.VERIFY_PARAM_ERROR, "参数校验失败");
         }
-        return params.getType().equals(ActionEnum.SERVICE_1.getService());
+        return params.getType().equals(ActionEnum.SERVICE_2.getService());
     }
 
     @Override
@@ -32,6 +32,6 @@ public class Action1 extends AbstractAction {
         if (null == params || null == params.getType()){
             throw new UtilsException(UtilsException.VERIFY_PARAM_ERROR, "参数校验失败");
         }
-        return "进入Action1的处理逻辑";
+        return "进入Action2的处理逻辑";
     }
 }
