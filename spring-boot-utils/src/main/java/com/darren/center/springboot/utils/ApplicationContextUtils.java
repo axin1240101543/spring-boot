@@ -13,13 +13,13 @@ import org.springframework.util.Assert;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Component
-public class SpringContextUtils implements ApplicationContextAware{
+public class ApplicationContextUtils implements ApplicationContextAware{
 
     private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SpringContextUtils.applicationContext = applicationContext;
+        ApplicationContextUtils.applicationContext = applicationContext;
     }
 
     /**

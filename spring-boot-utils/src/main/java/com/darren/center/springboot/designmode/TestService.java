@@ -1,7 +1,6 @@
 package com.darren.center.springboot.designmode;
 
 import com.darren.center.springboot.entity.TestRequest;
-import com.darren.center.springboot.entity.WebParams;
 
 /**
  * 策略模式：策略模式就是一个接口下有多个实现类，而每种实现类会处理某一种情况。

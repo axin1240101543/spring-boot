@@ -1,6 +1,7 @@
 package com.darren.center.springboot.entity;
 
 import com.darren.center.springboot.designmode.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Builder模式
  */
+@Slf4j
 public class TestRequest {
 
     private final int type;
@@ -59,6 +61,7 @@ public class TestRequest {
         public TestRequest build(){
             //业务处理后，得到想要的bean
             Users user = userService.getUserById(userId);
+            log.info("userId:{}, user:{}", userId, user);
             return new TestRequest(type, userId, user.getUserName(), user.getPassword(), user.getMobile(), user.getAge());
         }
 

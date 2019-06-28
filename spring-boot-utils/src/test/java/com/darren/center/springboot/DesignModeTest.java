@@ -1,7 +1,6 @@
 package com.darren.center.springboot;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.darren.center.springboot.command.Action;
 import com.darren.center.springboot.command.ActionMapper;
 import com.darren.center.springboot.designmode.TestFactory;
@@ -9,7 +8,7 @@ import com.darren.center.springboot.designmode.TestService;
 import com.darren.center.springboot.entity.TestRequest;
 import com.darren.center.springboot.entity.WebParams;
 import com.darren.center.springboot.exceptions.UtilsException;
-import com.darren.center.springboot.utils.SpringContextUtils;
+import com.darren.center.springboot.utils.ApplicationContextUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,7 +57,7 @@ public class DesignModeTest {
      */
     @Test
     public void factory(){
-        TestRequest request = SpringContextUtils.getBean(TestRequest.Builder.class)
+        TestRequest request = ApplicationContextUtils.getBean(TestRequest.Builder.class)
                 .type(1)
                 .userId(123456)
                 .build();
