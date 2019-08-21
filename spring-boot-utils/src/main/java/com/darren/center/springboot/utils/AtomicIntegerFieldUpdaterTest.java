@@ -7,11 +7,15 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
  */
 public class AtomicIntegerFieldUpdaterTest {
 
-    //  指定要更新哪个类（的实例），以及哪个 field
+    /**
+     * 指定要更新哪个类（的实例），以及哪个 field
+     */
     private static final AtomicIntegerFieldUpdater<AtomicIntegerFieldUpdaterTest> updater
             = AtomicIntegerFieldUpdater.newUpdater(AtomicIntegerFieldUpdaterTest.class, "count");
 
-    //  被更新的 field 必须是 volatile 的字段，并且不能用 static 修饰
+    /**
+     * 被更新的 field 必须是 volatile 的字段，并且不能用 static 修饰
+     */
     volatile int count = 100;
 
     public static void main(String[] args){
