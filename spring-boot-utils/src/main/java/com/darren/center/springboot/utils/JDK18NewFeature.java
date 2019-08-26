@@ -7,7 +7,6 @@ import java.util.*;
  */
 public class JDK18NewFeature {
 
-
     public static void main(String[] args) {
 
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 8, 2, 3);
@@ -78,6 +77,24 @@ public class JDK18NewFeature {
          */
         new Thread(() -> System.out.println("123456")).start();
 
+
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        List<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(30);
+        integers.add(5);
+        integers.add(5);
+        integers.add(7);
+
+        int max = Integer.MIN_VALUE;
+        for (Integer n : integers) {
+            max = Integer.max(max, n);
+        }
+        System.out.println(max);
+
+        int i = integers.stream().reduce(Integer.MIN_VALUE, (a, b) -> Integer.max(a, b));
+        System.out.println(i);
     }
 
 
