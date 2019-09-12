@@ -10,7 +10,8 @@ public class SecurityCounterTest {
 
     private final AtomicLong counter = new AtomicLong();
     private volatile long counter1;
-    private static final AtomicLongFieldUpdater<SecurityCounterTest> updater = AtomicLongFieldUpdater.newUpdater(SecurityCounterTest.class, "counter1");
+    private static final AtomicLongFieldUpdater<SecurityCounterTest> updater =
+            AtomicLongFieldUpdater.newUpdater(SecurityCounterTest.class, "counter1");
 
     /**
      * 包装类实现
